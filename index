@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Andrii Hrytsanchuk – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Associate Professor & Research Institute Director with 14+ years in education and science, focused on Customer Success roles.">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      background: radial-gradient(circle at 30% 30%, #38bdf8, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      font-weight: 700;
+      color: #0b1120;
+      box-shadow: 0 0 30px rgba(56,189,248,0.4);
+      flex-shrink: 0;
+    }
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+    .hero-main {
+      flex: 1 1 260px;
+      min-width: 0;
+    }
+    .hero-main h1 {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+    .hero-main .title {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .hero-main .tagline {
+      font-size: 14px;
+      color: #cbd5f5;
+      max-width: 520px;
+    }
+    .hero-aside {
+      flex: 0 0 260px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(15,118,110,0.25), rgba(56,189,248,0.08));
+      border: 1px solid rgba(56,189,248,0.5);
+      padding: 14px 16px;
+      font-size: 14px;
+    }
+    .hero-aside h2 {
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #bae6fd;
+      margin-bottom: 6px;
+    }
+    .hero-aside p { margin-bottom: 4px; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.85);
+      border: 1px solid var(--accent-soft);
+      color: #bae6fd;
+      margin-bottom: 8px;
+    }
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
+    }
+
+    /* Contact strip */
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      background: rgba(15,23,42,0.9);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+    }
+    .contact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #6b7280;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 28px;
+      padding: 18px 18px 16px;
+      border-radius: var(--radius);
+      background: rgba(15,23,42,0.92);
+      border: 1px solid var(--border);
+    }
+    section h2 {
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 12px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.6fr) minmax(0,1.2fr);
+      gap: 16px;
+    }
+
+    /* Experience */
+    .experience-item + .experience-item {
+      border-top: 1px solid var(--border);
+      margin-top: 12px;
+      padding-top: 12px;
+    }
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    .exp-role { font-weight: 600; }
+    .exp-org { color: var(--muted); font-size: 14px; }
+    .exp-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid var(--border);
+      color: #cbd5f5;
+    }
+    .exp-list {
+      font-size: 14px;
+      color: var(--muted);
+      padding-left: 18px;
+    }
+    .exp-list li { margin-bottom: 4px; }
+
+    /* Skills */
+    .skills-group + .skills-group {
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+    .skills-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip {
+      font-size: 12px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.96);
+      border: 1px solid #1d4ed8;
+      color: #dbeafe;
+    }
+
+    /* Education */
+    .edu-item + .edu-item {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .edu-degree { font-weight: 500; }
+    .edu-meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Side cards */
+    .side-card {
+      padding: 12px 12px 10px;
+      border-radius: var(--radius);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.14), rgba(15,23,42,0.94));
+      border: 1px solid rgba(56,189,248,0.35);
+      font-size: 13px;
+      color: #d1d5db;
+    }
+    .side-card h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #bae6fd;
+      margin-bottom: 6px;
+    }
+    .side-list {
+      padding-left: 18px;
+      margin-top: 2px;
+    }
+    .side-list li { margin-bottom: 2px; }
+
+    /* Footer */
+    footer {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .section-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-aside { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+     <div class="avatar">
+  <img src="photo.jpg" alt="Photo of Andrii Hrytsanchuk">
+</div>
+      <div class="hero-main">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          Open to Customer Success roles
+        </div>
+        <h1>Andrii Hrytsanchuk</h1>
+        <div class="title">
+          Director of Research Institute &amp; Associate Professor · 14+ years in education and science
+        </div>
+        <p class="tagline">
+          Helping partners, students, and stakeholders achieve their goals through clear communication, structured processes, and data-informed decisions.
+        </p>
+      </div>
+      <aside class="hero-aside">
+        <h2>Now</h2>
+        <p><strong>Director</strong>, Research Institute, Ivano-Frankivsk National Technical University of Oil and Gas</p>
+        <p class="exp-meta">Ivano-Frankivsk · Aug 2023 – present</p>
+        <p class="exp-meta">Exploring opportunities in Customer Success Management and related client-facing roles.</p>
+      </aside>
+    </header>
+
+    <div class="contact-bar">
+      <div class="contact-item">
+        <div>
+          <div class="contact-label">Email</div>
+          <a href="mailto:andriihrytsanchuk@gmail.com">andriihrytsanchuk@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div>
+          <div class="contact-label">Phone</div>
+          <a href="tel:+380664940095">+380 (66) 49 400 95</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div>
+          <div class="contact-label">Location</div>
+          <span>Ivano-Frankivsk, Ukraine</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <a href="https://www.linkedin.com/in/andrii-hrytsanchuk-92467823b/" target="_blank" rel="noreferrer">
+            /in/andrii-hrytsanchuk-92467823b
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <h2>Profile</h2>
+      <p style="font-size:14px; color:#d1d5db;">
+        Associate Professor and Director of a Research Institute with over 14 years of experience in higher education, research management, and stakeholder collaboration. 
+        Skilled in project management, relationship building, conflict resolution, and translating complex technical ideas into accessible language for diverse audiences. 
+      </p>
+    </section>
+
+    <section id="experience">
+      <div class="section-grid">
+        <div>
+          <h2>Experience</h2>
+
+          <article class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Director, Research Institute</div>
+                <div class="exp-org">Ivano-Frankivsk National Technical University of Oil and Gas</div>
+              </div>
+              <div class="exp-meta">Aug 2023 – present · Ivano-Frankivsk</div>
+            </div>
+            <div class="exp-tags">
+              <span class="tag">Project management</span>
+              <span class="tag">Stakeholder relations</span>
+              <span class="tag">Process improvement</span>
+              <span class="tag">Client support</span>
+            </div>
+            <ul class="exp-list">
+              <li>Manage multiple mid-scale research and innovation projects from concept to implementation with business, government, and international partners. </li>
+              <li>Design and optimize support processes for research sponsors and customers to ensure efficient communication and high satisfaction. </li>
+              <li>Lead strategic planning, performance analysis, and reporting for the institute. </li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Associate Professor</div>
+                <div class="exp-org">Ivano-Frankivsk National Technical University of Oil and Gas</div>
+              </div>
+              <div class="exp-meta">Sep 2018 – present · Ivano-Frankivsk</div>
+            </div>
+            <div class="exp-tags">
+              <span class="tag">Teaching &amp; mentoring</span>
+              <span class="tag">Curriculum design</span>
+              <span class="tag">Academic leadership</span>
+            </div>
+            <ul class="exp-list">
+              <li>Combine research, teaching, and supervision of students and postgraduates across engineering disciplines. </li>
+              <li>Develop educational materials, manuals, and guidelines to support learner success. </li>
+              <li>Build long-term relationships with students and colleagues, adapting communication to diverse audiences and resolving conflicts. </li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Assistant</div>
+                <div class="exp-org">Ivano-Frankivsk National Technical University of Oil and Gas</div>
+              </div>
+              <div class="exp-meta">Aug 2011 – Sep 2018 · Ivano-Frankivsk</div>
+            </div>
+            <div class="exp-tags">
+              <span class="tag">Teaching support</span>
+              <span class="tag">Lab coordination</span>
+              <span class="tag">Research support</span>
+            </div>
+            <ul class="exp-list">
+              <li>Supported laboratory and practical classes for undergraduate and graduate students, ensuring smooth learning processes. </li>
+              <li>Assisted in research projects through data collection, technical analysis, and documentation of results. </li>
+              <li>Coordinated seminars, workshops, and student projects in collaboration with faculty. </li>
+            </ul>
+          </article>
+        </div>
+
+        <aside class="side-card">
+          <h3>What I bring to Customer Success</h3>
+          <ul class="side-list">
+            <li>Strong stakeholder communication and relationship management. </li>
+            <li>Experience structuring processes and analyzing performance data. </li>
+            <li>Ability to explain complex technical topics in simple language. </li>
+            <li>Conflict resolution and long-term partner focus. </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-grid">
+        <div>
+          <h2>Skills</h2>
+
+          <div class="skills-group">
+            <div class="skills-title">Core competencies</div>
+            <div class="chips">
+              <span class="chip">Project &amp; program management</span>
+              <span class="chip">Stakeholder communication</span>
+              <span class="chip">Client &amp; partner support</span>
+              <span class="chip">Strategic planning</span>
+              <span class="chip">Data-driven decision making</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-title">Teaching &amp; mentoring</div>
+            <div class="chips">
+              <span class="chip">University-level teaching</span>
+              <span class="chip">Mentoring 100+ students</span>
+              <span class="chip">Curriculum &amp; materials design</span>
+              <span class="chip">Public speaking &amp; presentations</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-title">Domain expertise</div>
+            <div class="chips">
+              <span class="chip">Petroleum production</span>
+              <span class="chip">Oil &amp; gas pipelines</span>
+              <span class="chip">Storage facilities</span>
+              <span class="chip">Information &amp; measurement technologies</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="side-card">
+          <h3>Languages</h3>
+          <ul class="side-list">
+            <li>Ukrainian – native. </li>
+            <li>English – Intermediate. </li>
+          </ul>
+          <h3 style="margin-top:10px;">Soft skills</h3>
+          <ul class="side-list">
+            <li>Relationship building &amp; networking. </li>
+            <li>Conflict resolution &amp; negotiation. </li>
+            <li>Adaptability and continuous learning. </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-grid">
+        <div>
+          <h2>Education</h2>
+          <div class="edu-item">
+            <div class="edu-degree">Master's degree (in progress) – Information and Measurement Technologies</div>
+            <div class="edu-meta">Ivano-Frankivsk National Technical University of Oil and Gas · 2024 – present</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">PhD – Oil and Gas Pipelines and Storage Facilities</div>
+            <div class="edu-meta">Ivano-Frankivsk National Technical University of Oil and Gas · 2014 – 2017</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Specialist degree – Petroleum Production</div>
+            <div class="edu-meta">Ivano-Frankivsk National Technical University of Oil and Gas · 2006 – 2011</div>
+          </div>
+        </div>
+        <aside class="side-card">
+          <h3>Academic title</h3>
+          <p>Candidate of Engineering Sciences, 2018. </p>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Andrii Hrytsanchuk 
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
